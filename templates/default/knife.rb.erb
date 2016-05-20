@@ -1,0 +1,13 @@
+# See https://docs.getchef.com/config_rb_knife.html for more information on knife configuration options
+
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "#{ENV['USER']}"
+client_key               "#{ENV['HOME']}/.chef/self.pem"
+chef_server_url          "<%= @server_url %>"
+syntax_check_cache_path  "#{ENV['HOME']}/.chef/syntaxcache"
+cookbook_path            ["#{current_dir}/cookbooks", ".."]
+cookbook_email           "btb"
+knife[:supermarket_site] = "<%= @supermarket_url %>"
+
