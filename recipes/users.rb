@@ -22,7 +22,8 @@ template "#{node['kwik-e-mart']['user']['unix_home']}/.chef/knife.rb" do
     mode '0644'
     variables({
         :server_url => node['kwik-e-mart']['knife-config']['chef_server_url'],
-        :supermarket_url => node['kwik-e-mart']['knife-config']['supermarket_site']
+        :supermarket_url => node['kwik-e-mart']['knife-config']['supermarket_site'],
+        :chef_server_username => node['kwik-e-mart']['knife-config']['chef_server_username']
     })
 end
 

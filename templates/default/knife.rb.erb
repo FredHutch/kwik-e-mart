@@ -3,7 +3,7 @@
 current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT
-node_name                "#{ENV['USER']}"
+node_name                "<%= @chef_server_username %>"
 client_key               "#{ENV['HOME']}/.chef/self.pem"
 chef_server_url          "<%= @server_url %>"
 syntax_check_cache_path  "#{ENV['HOME']}/.chef/syntaxcache"
