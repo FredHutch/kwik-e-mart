@@ -23,7 +23,9 @@ template "#{node['kwik-e-mart']['user']['unix_home']}/.chef/knife.rb" do
     variables({
         :server_url => node['kwik-e-mart']['knife-config']['chef_server_url'],
         :supermarket_url => node['kwik-e-mart']['knife-config']['supermarket_site'],
-        :chef_server_username => node['kwik-e-mart']['knife-config']['chef_server_username']
+        :chef_server_username => node['kwik-e-mart']['knife-config']['chef_server_username'],
+        :chef_user => node['kwik-e-mart']['user']['username'],
+        :chef_user_home => node['kwik-e-mart']['user']['unix_home']
     })
 end
 
@@ -33,4 +35,3 @@ execute 'server_ssl_certs' do
     user node['kwik-e-mart']['user']['username']
     creates "#{node['kwik-e-mart']['user']['unix_home']}/.chef/trusted_certs"
 end
-

@@ -59,7 +59,6 @@ Dir.glob( "#{upload_dir}/*.tar.gz" ).each do |archive|
     execute 'upload to supermarket' do
         command "knife supermarket share #{cookbook_name} -o .. #{knife_options}"
         user node['kwik-e-mart']['user']['username']
-        environment ({ 'HOME' => node['kwik-e-mart']['user']['unix_home'] })
         cwd workdir
         live_stream true
     end
