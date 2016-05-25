@@ -46,6 +46,7 @@ ruby_block "atend" do
             cmd.run_command
             cmd.error!
             Chef::Log.warn( "Upload to server OK: #{cmd.stdout}" )
+            ::FileUtils.rm_r dir
         end
     end
 end
@@ -66,7 +67,7 @@ Dir.glob( "#{upload_dir}/*.tar.gz" ).each do |archive|
     bash "#{dirname} extract cookbook" do
         cwd workdir
         user node['kwik-e-mart']['user']['username']
-        code "tar xvf #{archive} --strip=1"
+        code "tar xvf #{archive} --strip=1 && rm -f #{archive}"
         creates "#{workdir}/metadata.rb"
     end
     ruby_block "add_to_workdirs" do
