@@ -17,6 +17,9 @@ suites:
   - name: default
     run_list:
       - recipe[kwik-e-mart::default]
-      - recipe[kwik-e-mart::users]
+    attributes:
+  - name: upload
+    run_list:
+      - recipe[kwik-e-mart::default]
       - recipe[kwik-e-mart::upload]
     attributes:
