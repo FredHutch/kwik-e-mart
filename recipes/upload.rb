@@ -55,6 +55,11 @@ end
 Dir.glob( "#{upload_dir}/*.tar.gz" ).each do |archive|
     dirname = ::File.basename(archive, '.tar.gz')
     workdir = "#{upload_dir}/#{dirname}"
+    bash "#{workdir} cleanup" do
+        cwd upload_dir
+        user node['kwik-e-mart']['user']['username']
+        code "rm -f #{workdir}"
+    end
     log "#{dirname} archive extraction" do
         level :warn
         message "Extracting #{archive} into #{workdir}"
